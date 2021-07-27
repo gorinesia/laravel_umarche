@@ -51,7 +51,7 @@ return [
             'database' => env('DB_DATABASE', 'laravel_umarche'),
             'username' => env('DB_USERNAME', 'umarche'),
             'password' => env('DB_PASSWORD', 'password123'),
-            'unix_socket' => env('DB_SOCKET', ''),
+            'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
