@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 
 class ItemController extends Controller
@@ -18,6 +20,9 @@ class ItemController extends Controller
 
     public function index()
     {
+        Mail::to('test@example.com')
+            ->send(new TestMail());
+
         $products = Product::availableItems()->get();
 
         return view('user.index', compact('products'));
