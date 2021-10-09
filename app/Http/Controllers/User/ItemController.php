@@ -31,12 +31,14 @@ class ItemController extends Controller
         });
     }
 
-    public function index()
+    public function index(Request $request)
     {
         Mail::to('test@example.com')
             ->send(new TestMail());
 
-        $products = Product::availableItems()->get();
+        $products = Product::availableItems()
+            ->sortOrder($request->sort)
+            ->get();
 
         return view('user.index', compact('products'));
     }
