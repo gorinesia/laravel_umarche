@@ -34,8 +34,8 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
-        Mail::to('test@example.com')
-            ->send(new TestMail());
+        // Mail::to('test@example.com')
+        //     ->send(new TestMail());
 
         // dd($request);
         $categories = PrimaryCategory::with('secondary')->get();
@@ -43,6 +43,7 @@ class ItemController extends Controller
 
         $products = Product::availableItems()
             ->selectCategory($request->category ?? '0')
+            ->searchKeyword($request->keyword)
             ->sortOrder($request->sort)
             ->paginate($request->pagination ?? '20');
 
